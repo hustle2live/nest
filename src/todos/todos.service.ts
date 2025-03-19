@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma-db/prisma.service';
-import { Todo } from './interfaces/todo.interface';
-import { TodoServiceInterface } from './interfaces/todo-service.interface';
-import { CreateTodoDTO } from './dto/create-todo.dto';
-import { UpdateTodoDTO } from './dto/update-todo.dto';
+import {
+  UpdateTodoDTO,
+  CreateTodoDTO,
+  Todo,
+  TodoServiceInterface,
+} from './index';
 
 @Injectable()
 export class TodoService implements TodoServiceInterface {

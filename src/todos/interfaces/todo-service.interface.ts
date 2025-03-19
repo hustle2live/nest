@@ -1,6 +1,4 @@
-import { CreateTodoDTO } from '../dto/create-todo.dto';
-import { UpdateTodoDTO } from '../dto/update-todo.dto';
-import { Todo } from './todo.interface';
+import { CreateTodoDTO, UpdateTodoDTO, Todo } from '../index';
 
 export interface TodoServiceInterface {
   getAllShared(): Promise<Todo[]>;
