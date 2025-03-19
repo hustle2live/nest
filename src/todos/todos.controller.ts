@@ -44,7 +44,3 @@ export class TodosController implements TodoControllerInterface {
     return await this.service.delete(todoId);
   }
 }
-
-// private async findTodo(todoId: number): Promise<Todo> {
-//   return await this.service.getOne(todoId);
-// }

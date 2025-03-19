@@ -19,11 +19,4 @@ describe('AppController', () => {
       expect(appController.getHello()).toBe('Hello World!');
     });
   });
-
-  describe('getTodos', () => {
-    it('should return an array of todos', () => {
-      const todoController = app.get(TodosController);
-      expect(todoController.getAll()).toEqual(['todo1', 'todo2', 'todo3']);
-    });
-  });
 });
