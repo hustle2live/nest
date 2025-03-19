@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Todo" ALTER COLUMN "text" DROP NOT NULL,
+ALTER COLUMN "text" SET DEFAULT '';

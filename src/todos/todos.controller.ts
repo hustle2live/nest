@@ -22,8 +22,13 @@ export class TodosController implements TodoControllerInterface {
   }
 
   @Post()
-  async addTodo(@Body() todoBody: CreateTodoDTO): Promise<Todo> {
-    return await this.service.create(todoBody);
+  async addTodo(
+    @Body() todoBody: CreateTodoDTO,
+    @Query('userId') userId: number,
+  ): Promise<Todo> {
+    console.log('userId ' + userId);
+
+    return await this.service.create(todoBody, Number(userId));
   }
 
   @Put(':id')

@@ -23,9 +23,12 @@ export class TodoService implements TodoServiceInterface {
     });
   }
 
-  async create(todo: CreateTodoDTO): Promise<Todo> {
+  async create(todo: CreateTodoDTO, userId: number): Promise<Todo> {
     return await this.prisma.todo.create({
-      data: todo,
+      data: {
+        ...todo,
+        user: { connect: { id: userId } },
+      },
     });
   }
 

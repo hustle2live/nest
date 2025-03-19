@@ -1,7 +1,6 @@
 export interface CreateTodoDTO {
-  text: string;
   title: string;
-  userId: number;
+  text?: string;
   isCompleted?: boolean;
   isPublic?: boolean;
 }

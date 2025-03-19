@@ -12,5 +12,4 @@ import { UserService } from 'src/users/users.service';
   controllers: [AppController, TodosController, UsersController],
   providers: [AppService, TodoService, UserService],
 })
-
 export class AppModule {}
