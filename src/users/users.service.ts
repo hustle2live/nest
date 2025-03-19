@@ -5,14 +5,26 @@ import {
   User,
   UpdateUserDTO,
   CreateUserDTO,
+  UserIncludesTodos,
 } from './index';
 
 @Injectable()
 export class UserService implements UserServiceInterface {
   constructor(private readonly prisma: PrismaService) {}
 
-  async getById(userId: number): Promise<User | null> {
+  async getAll(): Promise<User[]> {
+    return await this.prisma.user.findMany();
+  }
+
+  async getOne(userId: number): Promise<User> {
     return await this.prisma.user.findUnique({ where: { id: userId } });
+  }
+
+  async getOneWithTodos(userId: number): Promise<UserIncludesTodos> {
+    return await this.prisma.user.findUnique({
+      where: { id: userId },
+      include: { Todo: true },
+    });
   }
 
   async create(userBody: CreateUserDTO): Promise<User> {
