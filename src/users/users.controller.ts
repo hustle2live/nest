@@ -37,7 +37,7 @@ export class UsersController implements UserControllerInterface {
     @Param('id') userId: number,
     @Body() userBody: UpdateUserDTO,
   ): Promise<User> {
-    return await this.service.update(userId, userBody);
+    return await this.service.update(Number(userId), userBody);
   }
 
   @Delete(':id')

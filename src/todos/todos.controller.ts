@@ -58,7 +58,7 @@ export class TodosController implements TodoControllerInterface {
     @Body() todoBody: UpdateTodoDTO,
     @Res() res: Response,
   ): Promise<Response> {
-    const data = await this.service.update(todoId, todoBody);
+    const data = await this.service.update(Number(todoId), todoBody);
     return res.status(HttpStatus.OK).send(data);
   }
 
