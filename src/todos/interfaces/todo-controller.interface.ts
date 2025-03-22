@@ -1,8 +1,17 @@
-import { Todo, CreateTodoDTO, UpdateTodoDTO } from '../index';
+import { Response } from 'express';
+import { CreateTodoDTO, UpdateTodoDTO } from '../index';
 
 export interface TodoControllerInterface {
-  getTodos: (userId: number) => Promise<Todo[]>;
-  addTodo: (todoBody: CreateTodoDTO, userId: number) => Promise<Todo>;
-  updateTodo: (todoId: number, todoBody: UpdateTodoDTO) => Promise<Todo>;
-  deleteTodo: (todoId: number) => Promise<Todo>;
+  getTodos: (userId: number, res: Response) => Promise<Response>;
+  addTodo: (
+    todoBody: CreateTodoDTO,
+    res: Response,
+    userId: number,
+  ) => Promise<Response>;
+  updateTodo: (
+    todoId: number,
+    todoBody: UpdateTodoDTO,
+    res: Response,
+  ) => Promise<Response>;
+  deleteTodo: (todoId: number, res: Response) => Promise<Response>;
 }

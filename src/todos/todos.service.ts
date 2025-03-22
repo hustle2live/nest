@@ -47,11 +47,3 @@ export class TodoService implements TodoServiceInterface {
     return await this.prisma.todo.delete({ where: { id: todoId } });
   }
 }
-
-// GET ALL WITH PARAMS GENERIC
-
-// async getAll(userId: number): Promise<Todo[]> {
-//   return await this.prisma.todo.findMany({
-//     where: { userId: userId },
-//   });
-// }
