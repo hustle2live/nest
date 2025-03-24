@@ -10,6 +10,7 @@ import { UserService } from 'src/users/users.service';
 import { ValidationMiddleware } from 'src/middleware/validation.middleware';
 import { CreateTodoDTO, UpdateTodoDTO } from 'src/todos';
 import { CreateUserDTO, UpdateUserDTO } from 'src/users';
+import { IsExistMiddleware } from 'src/middleware/isExist.middleware';
 
 @Module({
   imports: [PrismaModule],
@@ -18,6 +19,8 @@ import { CreateUserDTO, UpdateUserDTO } from 'src/users';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
+    consumer.apply(IsExistMiddleware).forRoutes('todos/:id');
+    consumer.apply(IsExistMiddleware).forRoutes('users/:id');
     consumer
       .apply(async (req: Request, res: Response, next: NextFunction) => {
         const middleware = new ValidationMiddleware(

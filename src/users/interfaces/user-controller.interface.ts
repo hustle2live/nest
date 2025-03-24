@@ -2,7 +2,7 @@ import { User, CreateUserDTO, UpdateUserDTO } from '../index';
 import { UserIncludesTodos } from './user.interface';
 
 export interface UserControllerInterface {
-  getUser: (
+  getUserById: (
     userId: number,
     withTodos?: boolean,
   ) => Promise<User | UserIncludesTodos>;

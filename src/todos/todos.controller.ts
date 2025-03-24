@@ -29,6 +29,15 @@ export class TodosController implements TodoControllerInterface {
     return res.status(HttpStatus.OK).send(data);
   }
 
+  @Get(':id')
+  async getTodoById(
+    @Param('id') userId: number,
+    @Res() res: Response,
+  ): Promise<Response> {
+    const data = await this.service.getOne(userId);
+    return res.status(HttpStatus.OK).send(data);
+  }
+
   @Post()
   async addTodo(
     @Body() todoBody: CreateTodoDTO,

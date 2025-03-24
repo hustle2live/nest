@@ -14,4 +14,5 @@ export interface TodoControllerInterface {
     res: Response,
   ) => Promise<Response>;
   deleteTodo: (todoId: number, res: Response) => Promise<Response>;
+  getTodoById: (userId: number, res: Response) => Promise<Response>;
 }

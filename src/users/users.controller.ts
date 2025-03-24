@@ -16,9 +16,9 @@ import { CreateUserDTO, UpdateUserDTO, User, UserIncludesTodos } from './index';
 export class UsersController implements UserControllerInterface {
   constructor(private readonly service: UserService) {}
 
-  @Get()
-  async getUser(
-    @Query('userId') userId: number,
+  @Get(':id')
+  async getUserById(
+    @Param('id') userId: number,
     @Query('includeTodos') withTodos: boolean = false,
   ): Promise<User | UserIncludesTodos> {
     if (withTodos) {
