@@ -11,6 +11,7 @@ import { ValidationMiddleware } from 'src/middleware/validation.middleware';
 import { CreateTodoDTO, UpdateTodoDTO } from 'src/todos';
 import { CreateUserDTO, UpdateUserDTO } from 'src/users';
 import { IsExistMiddleware } from 'src/middleware/isExist.middleware';
+import { TryCatchMiddleware } from 'src/middleware/tryCatch.middleware';
 
 @Module({
   imports: [PrismaModule],
@@ -19,6 +20,8 @@ import { IsExistMiddleware } from 'src/middleware/isExist.middleware';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
+    consumer.apply(TryCatchMiddleware).forRoutes(TodosController);
+    consumer.apply(TryCatchMiddleware).forRoutes(UsersController);
     consumer.apply(IsExistMiddleware).forRoutes('todos/:id');
     consumer.apply(IsExistMiddleware).forRoutes('users/:id');
     consumer

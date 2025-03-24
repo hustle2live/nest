@@ -9,9 +9,9 @@ export class IsExistMiddleware implements NestMiddleware {
   constructor(private readonly prisma: PrismaService) {}
 
   async use(req: Request, res: Response, next: NextFunction) {
-    const requestId = Number(req.params.id);
-
     console.log('isExistMiddleware...');
+
+    const requestId = Number(req.params.id);
     let record: Todo | User | null;
 
     if (req.baseUrl.includes('todos')) {
@@ -29,7 +29,7 @@ export class IsExistMiddleware implements NestMiddleware {
 
     if (!record) {
       console.dir('__________record not found_________________');
-      throw new NotFoundException('Record id is not defined');
+      throw new NotFoundException('Invalid record id');
     }
 
     console.dir('_____________next______________');
